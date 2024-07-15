@@ -30,9 +30,8 @@ function removeShakeAnimation(element) {
   });
 }
 
-function signin(event) {
-  event.preventDefault();
-
+function signin() {
+  const cin= document.getElementById("cin");
   const name = document.getElementById("firstName");
   const secondname = document.getElementById("secondName");
   const phone = document.getElementById("phoneNumber");
@@ -46,6 +45,7 @@ function signin(event) {
   let isValid = true;
 
   if (ischaine(name.value) || name.value.length == 0 || name.value.length > 15) {
+    name.value=""
     name.placeholder = "Name not valid";
     name.classList.add("error");
     isValid = false;
@@ -55,6 +55,7 @@ function signin(event) {
   }
 
   if (ischaine(secondname.value) || secondname.value.length == 0 || secondname.value.length > 15) {
+    secondname.value=""
     secondname.placeholder = "Last name not valid";
     secondname.classList.add("error");
     isValid = false;
@@ -62,8 +63,18 @@ function signin(event) {
   } else {
     secondname.classList.remove("error");
   }
+  if (cin.value.length !== 8 || isNaN(cin.value)) {
+    cin.value=""
+    cin.placeholder = "cin number not valid";
+    cin.classList.add("error");
+    isValid = false;
+    removeShakeAnimation(cin);
+  } else {
+    cin.classList.remove("error");
+  }
 
   if (phone.value.length !== 8 || isNaN(phone.value)) {
+    phone.value=""
     phone.placeholder = "Phone number not valid";
     phone.classList.add("error");
     isValid = false;
@@ -74,6 +85,7 @@ function signin(event) {
 
   const test2 = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   if (!email.value.match(test2)) {
+    email.value=""
     email.placeholder = "Email not valid";
     email.classList.add("error");
     isValid = false;
@@ -84,6 +96,7 @@ function signin(event) {
 
   const test1 = /^[a-zA-Z0-9._%+-]+$/;
   if (!test1.test(password.value)) {
+    password.value=""
     password.placeholder = "Password not valid";
     password.classList.add("error");
     isValid = false;
@@ -93,6 +106,7 @@ function signin(event) {
   }
 
   if (zip.value.length !== 5 || isNaN(zip.value)) {
+    zip.value=""
     zip.placeholder = "Zip code not valid";
     zip.classList.add("error");
     isValid = false;
@@ -102,6 +116,7 @@ function signin(event) {
   }
 
   if (street.value === "") {
+    street.value=""
     street.placeholder = "Street not valid";
     street.classList.add("error");
     isValid = false;
@@ -118,13 +133,14 @@ function signin(event) {
   } else {
     city.classList.remove("error");
   }
-
-  if (security.value === "") {
-    security.classList.add("error");
+  if (security.selectedIndex == 0) {
+    document.getElementById("securityAnswer").value=""
+    document.getElementById("securityAnswer").placeholder = "Answer not valid";
+    document.getElementById("securityAnswer").classList.add("error");
     isValid = false;
     removeShakeAnimation(security);
   } else {
-    security.classList.remove("error");
+    document.getElementById("securityAnswer").classList.remove("error");
   }
 
   if (isValid) {
@@ -132,4 +148,4 @@ function signin(event) {
   }
 }
 
-document.querySelector(".form.signup form").addEventListener("submit", signin);
+
