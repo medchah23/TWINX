@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login & Signup Form</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<section class="wrapper" id="wrapper">
+  <div class="form signup">
+    <header id="signupHeader">Signup</header>
+    <form action="#">
+      <input type="text" id="firstName" placeholder="First name" required />
+      <input type="text" id="secondName" placeholder="Second name" required />
+      <input type="text" name="" id="cin" placeholder="Cin">
+      <input type="number" id="phoneNumber" value=0 placeholder="Phone number" />
+      <div class="address-group">
+        <input type="text" id="street" placeholder="Street" class="address" />
+        <input type="text" id="city" placeholder="City" class="address" />
+        <input type="text" id="zipCode" placeholder="Zip code" class="address" />
+      </div>
+      <input type="text" id="email" placeholder="Email address" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <select id="securityQuestion" class="security" name="security1" required>
+        <option value="">Select a question from the following options.</option>
+        <option value="1">Who's your daddy?</option>
+        <option value="2">What is your favorite color?</option>
+        <option value="3">What is your mother's favorite aunt's favorite color?</option>
+        <option value="4">Where does the rain in Spain mainly fall?</option>
+        <option value="5">If Mary had three apples, would you steal them?</option>
+        <option value="6">What brand of food did your first pet eat?</option>
+      </select>
+      <input type="text" id="securityAnswer" placeholder="Security answer" required />
+      <div class="checkbox">
+        <input type="checkbox" id="signupCheck" />
+        <label for="signupCheck">I accept all terms & conditions</label>
+      </div>
+      <input type="submit" onsubmit="" id="signupSubmit" value="Signup" />
+    </form>
+  </div>
+  <div class="form login">
+    <header id="loginHeader">Login</header>
+    <form action="#">
+      <input type="text" id="loginEmail" placeholder="Email address" required />
+      <input type="password" id="loginPassword" placeholder="Password" required />
+      <a href="#" id="forgotPassword">Forgot password?</a>
+      <input type="submit" id="loginSubmit" value="Login" />
+    </form>
+  </div>
+</section>
+<script src="js/app.js"></script>
+</body>
+</html>
