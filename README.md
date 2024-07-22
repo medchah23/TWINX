@@ -74,6 +74,11 @@ $db = 'twinx';
 $user = 'root';
 $pass = '';
 ?>
+'''
+
+
+
+
 ###Notes:
 -Security: Consider adding security best practices like using prepared statements for MySQL queries and sanitizing user inputs.
 -Contributing: If this is an open-source project, include guidelines for contributing, reporting bugs, and requesting features.
