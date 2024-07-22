@@ -11,19 +11,19 @@
 <section class="wrapper" id="wrapper">
   <div class="form signup">
     <header id="signupHeader">Signup</header>
-    <form action="#" method="post" onsubmit="signin()">
-      <input type="text" id="firstName" placeholder="First name"  />
-      <input type="text" id="secondName" placeholder="Second name"  />
-      <input type="text" name="" id="cin" placeholder="Cin">
-      <input type="number" id="phoneNumber" value=0 placeholder="Phone number" />
+    <form id="signupForm" action="php/signin.php" method="post">
+      <input type="text" id="firstName" name="firstName" placeholder="First name" />
+      <input type="text" id="secondName" name="secondName" placeholder="Second name" />
+      <input type="text" id="cin" name="cin" placeholder="Cin">
+      <input type="number" id="phoneNumber" name="phoneNumber" value="0" placeholder="Phone number" />
       <div class="address-group">
-        <input type="text" id="street" placeholder="Street" class="address" />
-        <input type="text" id="city" placeholder="City" class="address" />
-        <input type="text" id="zipCode" placeholder="Zip code" class="address" />
+        <input type="text" id="street" name="street" placeholder="Street" class="address" />
+        <input type="text" id="city" name="city" placeholder="City" class="address" />
+        <input type="text" id="zipCode" name="zipCode" placeholder="Zip code" class="address" />
       </div>
-      <input type="text" id="email" placeholder="Email address"  />
-      <input type="password" id="password" placeholder="Password"  />
-      <select id="securityQuestion" class="security" name="security1" >
+      <input type="text" id="email" name="email" placeholder="Email address" />
+      <input type="password" id="password" name="password" placeholder="Password" />
+      <select id="securityQuestion" class="security" name="securityQuestion">
         <option value="">Select a question from the following options.</option>
         <option value="1">Who's your daddy?</option>
         <option value="2">What is your favorite color?</option>
@@ -32,19 +32,19 @@
         <option value="5">If Mary had three apples, would you steal them?</option>
         <option value="6">What brand of food did your first pet eat?</option>
       </select>
-      <input type="text" id="securityAnswer" placeholder="Security answer"  />
+      <input type="text" id="securityAnswer" name="securityAnswer" placeholder="Security answer" />
       <div class="checkbox">
         <input type="checkbox" id="signupCheck" />
         <label for="signupCheck">I accept all terms & conditions</label>
       </div>
-      <input type="submit" onsubmit id="signupSubmit" value="Signup" />
+      <input type="submit" id="signupSubmit" value="Signup" />
     </form>
   </div>
   <div class="form login">
     <header id="loginHeader">Login</header>
-    <form action="#"method="post">
-      <input type="text" id="loginEmail" placeholder="Email address"  />
-      <input type="password" id="loginPassword" placeholder="Password"  />
+    <form id="loginForm" action="php/login.php" method="post">
+      <input type="text" id="loginEmail" name="loginEmail" placeholder="Email address" />
+      <input type="password" id="loginPassword" name="loginPassword" placeholder="Password" />
       <a href="#" id="forgotPassword">Forgot password?</a>
       <input type="submit" id="loginSubmit" value="Login" />
     </form>
