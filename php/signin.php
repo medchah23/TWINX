@@ -39,7 +39,7 @@ $stmt->bind_param('sssssssssss', $firstName, $secondName, $cin, $phoneNumber, $e
 if ($stmt->execute()) {
   echo json_encode(['status' => 'success', 'message' => 'Registration successful!']);
 } else {
-  echo json_encode(['status' => 'error', 'message' => 'Registration failed.']);
+echo json_encode(['status' => 'error', 'message' => 'Registration failed.']);
 }
 $stmt->close();
 $mysqli->close();
