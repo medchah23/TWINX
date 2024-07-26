@@ -3,32 +3,41 @@ header('Content-Type: application/json');
 
 $input = json_decode(file_get_contents('php://input'), true);
 
-$email = $input['loginEmail'];  // Corrected the key name
-$password = $input['loginPassword'];  // Corrected the key name
+$email = $input['loginEmail'];
+$password = $input['loginPassword'];
 
-$mysqli = new mysqli("localhost", "root", "", "twinx");
+// Sanitize email to prevent SQL injection
+// Connect to MySQL
+$mysqli = mysqli_connect("localhost", "root", "", "twinx");
 
-if ($mysqli->connect_error) {
-  echo json_encode(['status' => 'error', 'message' => 'Failed to connect to MySQL: ' . $mysqli->connect_error]);
+// Check connection
+if (!$mysqli) {
+  echo  mysqli_connect_error();
   exit();
 }
 
-$stmt = $mysqli->prepare("SELECT * FROM users WHERE email = ?");
-$stmt->bind_param('s', $email);
-$stmt->execute();
-$result = $stmt->get_result();
+// Escape the email to prevent SQL injection
+$email = mysqli_real_escape_string($mysqli, $email);
 
-if ($result->num_rows > 0) {
-  $user = $result->fetch_assoc();
-  if (password_verify($password, $user['password'])) {
-    echo json_encode(['status' => 'success', 'message' => 'Login successful!']);
+// Perform the query
+$query = "SELECT * FROM users WHERE email = '$email'";
+$result = mysqli_query($mysqli, $query);
+
+if ($result) {
+  if (mysqli_num_rows($result) > 0) {
+    $user = mysqli_fetch_assoc($result);
+    if (password_verify($password, $user['password'])) {
+      echo json_encode(['status' => 'success', 'message' => 'Login successful!']);
+    } else {
+      echo json_encode(['status' => 'error', 'message' => 'Invalid email or password.']);
+    }
   } else {
     echo json_encode(['status' => 'error', 'message' => 'Invalid email or password.']);
   }
 } else {
-  echo json_encode(['status' => 'error', 'message' => 'Invalid email or password.']);
+  echo json_encode(['status' => 'error', 'message' => 'Query failed: ' . mysqli_error($mysqli)]);
 }
 
-$stmt->close();
-$mysqli->close();
+// Close the connection
+mysqli_close($mysqli);
 ?>

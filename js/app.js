@@ -124,15 +124,10 @@ function signin(event) {
   const zip = document.getElementById("zipCode");
   const security = document.getElementById("securityQuestion");
   const securityAnswer = document.getElementById("securityAnswer");
-
-  // Function to remove error styling and animation
   function removeError(element) {
     element.classList.remove("error");
   }
-
   let isValid = true;
-
-  // Validation functions
   function validateName(input) {
     return !ischaine(input.value) && input.value.length > 0 && input.value.length <= 15;
   }

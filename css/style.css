@@ -131,7 +131,6 @@ input.error {
   border: 2px solid red;
   animation: shake 0.5s;
 }
-
 input.error::placeholder {
   color: red;
 }
