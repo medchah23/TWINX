@@ -13,6 +13,11 @@ function createPopupWithRedirect(message, status, redirectUrl) {
     countdownElement.innerText = "Redirecting in 5 seconds...";
     popup.appendChild(countdownElement);
 
+    // Add loading bar
+    const loadingBar = document.createElement("div");
+    loadingBar.classList.add("loading-bar");
+    popup.appendChild(loadingBar);
+
     document.body.appendChild(popup);
 
     setTimeout(() => {
@@ -36,9 +41,6 @@ function createPopupWithRedirect(message, status, redirectUrl) {
         }, 300);
     }, 6000);
 }
-
-// Example usage
-// createPopupWithRedirect("Login succeeded", "success", "home.html");
 
 function createPopup(message, status) {
     const popup = document.createElement("div");
@@ -102,9 +104,8 @@ function check(event) {
         removeError(email);
     }
 
-    if (!isValid) return; // Stop if validation fails
+    if (!isValid) return;
     const data = {
-        // Replace with your actual data structure
         email: email.value,
         securityQuestion: security.value,
         securityAnswer: securityAnswer.value
@@ -117,21 +118,19 @@ function check(event) {
         },
         body: JSON.stringify(data)
     })
-        .then(response => response.text())
-        .then(text => {
-
-                const data = JSON.parse(text);
-                if (data.status === 'success') {
-                    createPopupWithRedirect("Email Sended", "success", "home.html");
-                } else {
-                    createPopup(data.message, data.status);
-                }
-
-
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                createPopupWithRedirect("Email Sent", "success", "./otp.html");
+            } else {
+                createPopup(data.message, data.status);
+            }
         })
         .catch(error => {
             console.error('Fetch error:', error);
             createPopup('An error occurred during fetch. Please try again.', 'error');
         });
+
 }
+
 document.getElementById('securityForm').addEventListener('submit', check);

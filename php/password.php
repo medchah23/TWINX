@@ -1,48 +1,66 @@
 <?php
-
 header('Content-Type: application/json');
 
-// Database connection
-$connection = mysqli_connect("localhost", "root", "", "twinx");
+// Database connection details
+$host = 'localhost';  // Change this if your MySQL server is on a different host
+$dbUsername = 'root'; // Your MySQL username
+$dbPassword = '';     // Your MySQL password
+$dbName = 'twinx';    // Your MySQL database name
 
-if (!$connection) {
-    echo json_encode(['status' => 'error', 'message' => 'Failed to connect to the database']);
-    exit();
+// Create a connection
+$conn = mysqli_connect($host, $dbUsername, $dbPassword, $dbName);
+
+// Check connection
+if (!$conn) {
+    die(json_encode(array('status' => 'error', 'message' => 'Database connection failed: ' . mysqli_connect_error())));
 }
 
+// Retrieve the JSON payload from the request body
 $input = json_decode(file_get_contents('php://input'), true);
 
-if (!isset($input['email'], $input['securityQuestion'], $input['securityAnswer'])) {
-    echo json_encode(['status' => 'error', 'message' => 'Missing required fields']);
-    exit();
+$response = array('status' => 'error', 'message' => 'Invalid request');
+
+// Ensure email and security question are set
+if (isset($input['email'], $input['securityQuestion'], $input['securityAnswer'])) {
+    // Sanitize the inputs
+    $email = filter_var($input['email'], FILTER_SANITIZE_EMAIL);
+    $securityQuestion = htmlspecialchars(trim($input['securityQuestion']));
+    $securityAnswer = htmlspecialchars(trim($input['securityAnswer']));
+
+    // Prepare the SQL query
+    $query = "SELECT email FROM users WHERE email = ? AND security_question = ? AND security_answer = ?";
+    $stmt = mysqli_prepare($conn, $query);
+
+    if ($stmt) {
+        // Bind parameters to the query
+        mysqli_stmt_bind_param($stmt, "sss", $email, $securityQuestion, $securityAnswer);
+
+        // Execute the query
+        mysqli_stmt_execute($stmt);
+
+        // Store the result
+        mysqli_stmt_store_result($stmt);
+
+        // Check if any rows are returned
+        if (mysqli_stmt_num_rows($stmt) > 0) {
+            $response['status'] = 'success';
+            $response['message'] = 'Email sent successfully';
+
+        } else {
+            $response['status'] = 'error';
+            $response['message'] = 'Invalid security answer';
+        }
+
+        // Close the statement
+        mysqli_stmt_close($stmt);
+    } else {
+        $response['message'] = 'Query preparation failed';
+    }
 }
 
-$email = $input['email'];
-$securityQuestion = $input['securityQuestion'];
-$securityAnswer = $input['securityAnswer'];
+// Close the database connection
+mysqli_close($conn);
 
-// Prepared statement for user email verification
-$query = "SELECT * FROM users WHERE email = ?";
-$stmt = mysqli_prepare($connection, $query);
-mysqli_stmt_bind_param($stmt, "s", $email);
-mysqli_stmt_execute($stmt);
-$result = mysqli_stmt_get_result($stmt);
-
-if (mysqli_num_rows($result) == 0) {
-    echo json_encode(['status' => 'error', 'message' => 'Invalid email']);
-} else {
-    // Prepared statement for security question and answer verification
-    $query1 = "SELECT * FROM users WHERE security_question = ? AND security_answer = ? AND email = ?";
-    $stmt1 = mysqli_prepare($connection, $query1);
-    mysqli_stmt_bind_param($stmt1, "sss", $securityQuestion, $securityAnswer, $email);
-    mysqli_stmt_execute($stmt1);
-    $result1 = mysqli_stmt_get_result($stmt1);
-
-    if (mysqli_num_rows($result1) == 0) {
-        echo json_encode(['status' => 'error', 'message' => 'Invalid security question or answer']);
-    }else if(mysqli_num_rows($result1) == 1){
-        echo json_encode(['status' => 'success', 'message' => 'Security question correct']);}}
-mysqli_stmt_close($stmt);
-mysqli_stmt_close($stmt1);
-mysqli_close($connection);
+// Send the JSON response
+echo json_encode($response);
 ?>
