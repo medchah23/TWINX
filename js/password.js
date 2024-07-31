@@ -127,8 +127,8 @@ function check(event) {
             }
         })
         .catch(error => {
-            console.error('Fetch error:', error);
-            createPopup('An error occurred during fetch. Please try again.', 'error');
+            createPopup(data.message, data.status);
+
         });
 
 }

@@ -1,0 +1,18 @@
+Failed to send OTP email: Unsupported Media Type
+Failed to send OTP email: Unsupported Media Type
+Failed to send OTP email: Unsupported Media Type
+Failed to send OTP email: Unsupported Media Type
+Failed to send OTP email: Unsupported Media Type
+Failed to send OTP email: Unsupported Media Type
+Failed to send OTP email: Unsupported Media Type
+Failed to send OTP email 2: Unsupported Media Type
+Error sending email 1: HTTP_Request2 needs an absolute HTTP(S) request URL, '1vkk9d.api.infobip.com' given
+Error sending email 1: HTTP_Request2 needs an absolute HTTP(S) request URL, '1vkk9d.api.infobip.com' given
+Error sending email 1: HTTP_Request2 needs an absolute HTTP(S) request URL, '1vkk9d.api.infobip.com' given
+Error sending email 1: HTTP_Request2 needs an absolute HTTP(S) request URL, '1vkk9d.api.infobip.com' given
+Error sending email 1: HTTP_Request2 needs an absolute HTTP(S) request URL, '1vkk9d.api.infobip.com' given
+Invalid security answer or email not found.
+Failed to send OTP email 2: Unsupported Media Type
+Failed to send OTP email 2: Unsupported Media Type
+Failed to send OTP email 2: Unsupported Media Type
+Failed to send OTP email 2: Unsupported Media Type

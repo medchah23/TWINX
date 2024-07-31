@@ -10,8 +10,25 @@
     <option name="highlightLevel" value="WARNING" />
     <option name="transferred" value="true" />
   </component>
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/php/vendor/pear/net_url2" />
+      <path value="$PROJECT_DIR$/php/vendor/pear/http_request2" />
+      <path value="$PROJECT_DIR$/php/vendor/pear/pear_exception" />
+      <path value="$PROJECT_DIR$/php/vendor/composer" />
+      <path value="$PROJECT_DIR$/php/vendor/phpmailer/phpmailer" />
+      <path value="$PROJECT_DIR$/php/vendor/starkbank/ecdsa" />
+      <path value="$PROJECT_DIR$/php/vendor/sendgrid/php-http-client" />
+      <path value="$PROJECT_DIR$/php/vendor/sendgrid/sendgrid" />
+    </include_path>
+  </component>
   <component name="PhpStanOptionsConfiguration">
     <option name="transferred" value="true" />
+  </component>
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/php/vendor/autoload.php" />
+    </phpunit_settings>
   </component>
   <component name="PsalmOptionsConfiguration">
     <option name="transferred" value="true" />
