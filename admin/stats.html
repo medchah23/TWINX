@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Statistics</title>
+    <link rel="stylesheet" href="css/stats.css">
+</head>
+
+<body>
+
+
+<div class="main-content">
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>Statistics Overview</h1>
+    </div>
+    <div class="metrics">
+        <div class="metric-card">
+            <i class="fas fa-dollar-sign"></i>
+            <div class="metric-info">
+                <div class="metric-value" id="totalRevenue">$0</div> <!-- Add id="totalRevenue" -->
+                <div class="metric-label">Total Revenue</div>
+            </div>
+        </div>
+
+        <div class="metric-card">
+            <i class="fas fa-shopping-cart"></i>
+            <div class="metric-info">
+                <div class="metric-value" id="total_orders">350</div>
+                <div class="metric-label">Total Orders</div>
+            </div>
+        </div>
+        <div class="metric-card">
+            <i class="fas fa-users"></i>
+            <div class="metric-info">
+                <div class="metric-value" id="users_active">1,230</div>
+                <div class="metric-label">Active Users</div>
+            </div>
+        </div>
+        <div class="metric-card">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div class="metric-info">
+                <div class="metric-value">15</div>
+                <div class="metric-label">Pending Issues</div>
+            </div>
+        </div>
+    </div>
+    <div class="charts">
+        <div class="chart-card">
+            <h3>Sales Over Time</h3>
+            <canvas id="salesChart" style="width: 100%; height: 250px;"></canvas>
+        </div>
+        <div class="chart-card">
+            <h3>User Growth</h3>
+            <canvas id="userGrowthChart" style="width: 100%; height: 250px;"></canvas>
+        </div>
+        <div class="chart-card">
+            <h3>Order Status Breakdown</h3>
+            <canvas id="orderStatusChart" style="width: 100%; height: 250px;"></canvas>
+        </div>
+    </div>
+    <div class="table-card">
+        <h3>Detailed Statistics</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>Metric</th>
+                <th>Value</th>
+                <th>Change</th>
+                <th>Period</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>New Customers</td>
+                <td>150</td>
+                <td>+10%</td>
+                <td>Last Month</td>
+            </tr>
+            <tr>
+                <td>Returning Customers</td>
+                <td>75</td>
+                <td>-5%</td>
+                <td>Last Month</td>
+            </tr>
+            <tr>
+                <td>Average Order Value</td>
+                <td>$75.50</td>
+                <td>+3%</td>
+                <td>Last Month</td>
+            </tr>
+            <tr>
+                <td>Refund Requests</td>
+                <td>10</td>
+                <td>+2%</td>
+                <td>Last Month</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/stats.js"></script>
+</body>
+
+</html>

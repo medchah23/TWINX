@@ -28,139 +28,29 @@
 
 
 <div class="sidebar">
-    <a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+    <a href="stats.html" target="content-frame"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
     <button class="dropdown-btn"><i class="fas fa-box"></i> Products
         <i class="fas fa-caret-down"></i>
     </button>
     <div class="dropdown-container">
-        <a href="#"><i class="fas fa-plus"></i> Add Product</a>
-        <a href="#"><i class="fas fa-list"></i> View Products</a>
-        <a href="#"><i class="fas fa-tags"></i> Categories</a>
+        <a href="add-product.html" target="content-frame"><i class="fas fa-plus"></i> Add Product</a>
+        <a href="view-products.html" target="content-frame"><i class="fas fa-list"></i> View Products</a>
+        <a href="categories.html" target="content-frame"><i class="fas fa-tags"></i> Categories</a>
     </div>
-    <a href="#"><i class="fas fa-shopping-cart"></i> Orders</a>
-    <a href="#"><i class="fas fa-users"></i> Customers</a>
-    <a href="#"><i class="fas fa-chart-line"></i> Reports</a>
+    <a href="orders.html" target="content-frame"><i class="fas fa-shopping-cart"></i> Orders</a>
+    <a href="customers.html" target="content-frame"><i class="fas fa-users"></i> Customers</a>
+    <a href="reports.html" target="content-frame"><i class="fas fa-chart-line"></i> Reports</a>
     <button class="dropdown-btn"><i class="fas fa-cog"></i> Settings
         <i class="fas fa-caret-down"></i>
     </button>
     <div class="dropdown-container">
-        <a href="#"><i class="fas fa-user-cog"></i> Profile Settings</a>
-        <a href="#"><i class="fas fa-key"></i> Security Settings</a>
-        <a href="#"><i class="fas fa-power-off"></i> Logout</a>
+        <a href="profile-settings.html" target="content-frame"><i class="fas fa-user-cog"></i> Profile Settings</a>
+        <a href="security-settings.html" target="content-frame"><i class="fas fa-key"></i> Security Settings</a>
+        <a href="logout.html" target="content-frame"><i class="fas fa-power-off"></i> Logout</a>
     </div>
 </div>
-
-<!-- Main Content Area -->
 <div class="main-content">
-    <!-- Dashboard Header -->
-    <div class="dashboard-header">
-        <h1>Dashboard</h1>
-        <button>Refresh Data</button>
-    </div>
-
-    <!-- Metrics Section -->
-    <div class="metrics">
-        <div class="metric-card">
-            <i class="fas fa-dollar-sign"></i>
-            <div class="metric-info">
-                <div class="metric-value">$12,345</div>
-                <div class="metric-label">Total Sales</div>
-            </div>
-        </div>
-        <div class="metric-card">
-            <i class="fas fa-shopping-cart"></i>
-            <div class="metric-info">
-                <div class="metric-value">45</div>
-                <div class="metric-label">New Orders</div>
-            </div>
-        </div>
-        <div class="metric-card">
-            <i class="fas fa-users"></i>
-            <div class="metric-info">
-                <div class="metric-value">120</div>
-                <div class="metric-label">Active Users</div>
-            </div>
-        </div>
-        <div class="metric-card">
-            <i class="fas fa-exclamation-triangle"></i>
-            <div class="metric-info">
-                <div class="metric-value">5</div>
-                <div class="metric-label">Stock Alerts</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Charts Section -->
-    <div class="charts">
-        <div class="chart-card">
-            <h3>Sales Over Time</h3>
-            <!-- Placeholder for Sales Chart -->
-            <canvas id="salesChart" style="width: 100%; height: 250px;"></canvas>
-        </div>
-        <div class="chart-card">
-            <h3>Top Selling Products</h3>
-            <!-- Placeholder for Products Chart -->
-            <canvas id="productsChart" style="width: 100%; height: 250px;"></canvas>
-        </div>
-        <div class="chart-card">
-            <h3>Order Status Distribution</h3>
-            <!-- Placeholder for Orders Chart -->
-            <canvas id="ordersChart" style="width: 100%; height: 250px;"></canvas>
-        </div>
-    </div>
-
-    <!-- Recent Orders Table -->
-    <div class="table-card">
-        <h3>Recent Orders</h3>
-        <table>
-            <thead>
-            <tr>
-                <th>Order ID</th>
-                <th>Customer</th>
-                <th>Date</th>
-                <th>Status</th>
-                <th>Total</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>#1001</td>
-                <td>John Doe</td>
-                <td>July 28, 2024</td>
-                <td>Shipped</td>
-                <td>$150.00</td>
-            </tr>
-            <tr>
-                <td>#1002</td>
-                <td>Jane Smith</td>
-                <td>July 27, 2024</td>
-                <td>Pending</td>
-                <td>$85.00</td>
-            </tr>
-            <tr>
-                <td>#1003</td>
-                <td>Michael Johnson</td>
-                <td>July 26, 2024</td>
-                <td>Delivered</td>
-                <td>$120.00</td>
-            </tr>
-            <tr>
-                <td>#1004</td>
-                <td>Emily Davis</td>
-                <td>July 25, 2024</td>
-                <td>Cancelled</td>
-                <td>$95.00</td>
-            </tr>
-            <tr>
-                <td>#1005</td>
-                <td>William Brown</td>
-                <td>July 24, 2024</td>
-                <td>Shipped</td>
-                <td>$200.00</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+    <iframe name="content-frame" src="stats.html" frameborder="0" style="width: 100%; height: 100vh;"></iframe>
 </div>
 <div class="footer">
     &copy; 2024 E-commerce Admin Dashboard
@@ -169,7 +59,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<script src="js/dashbord.js"></script>
 </body>
 
 </html>
