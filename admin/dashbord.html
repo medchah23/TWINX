@@ -6,59 +6,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enhanced Admin Dashboard</title>
     <link rel="stylesheet" href="css/dashbord.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- Ensure FontAwesome is loaded -->
+    <style>
+        /* Quick fix to ensure dropdowns are hidden initially */
+        .dropdown-container {
+            display: none;
+        }
+    </style>
 </head>
+
 <body>
-<div class="top-nav">
-    <div class="logo">
-        E-commerce Admin
-    </div>
-    <div class="profile-menu">
-        <img src="https://via.placeholder.com/40" alt="Profile Picture">
-        <span>Admin Name</span>
-        <div class="dropdown">
-            <i class="fas fa-caret-down"></i>
-            <div class="dropdown-content">
-                <a href="#">Profile</a>
-                <a href="#">Settings</a>
-                <a href="#">Logout</a>
+    <div class="top-nav">
+        <div class="logo">
+            E-commerce Admin
+        </div>
+        <div class="profile-menu">
+            <img src="https://via.placeholder.com/40" alt="Profile Picture">
+            <span>Admin Name</span>
+            <div class="dropdown">
+                <i class="fas fa-caret-down"></i>
+                <div class="dropdown-content">
+                    <a href="#">Profile</a>
+                    <a href="#">Settings</a>
+                    <a href="#">Logout</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-
-<div class="sidebar">
-    <a href="stats.html" target="content-frame"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-    <button class="dropdown-btn"><i class="fas fa-box"></i> Products
-        <i class="fas fa-caret-down"></i>
-    </button>
-    <div class="dropdown-container">
-        <a href="add-product.html" target="content-frame"><i class="fas fa-plus"></i> Add Product</a>
-        <a href="view-products.html" target="content-frame"><i class="fas fa-list"></i> View Products</a>
-        <a href="categories.html" target="content-frame"><i class="fas fa-tags"></i> Categories</a>
+    <div class="sidebar">
+        <a href="stats.html" target="iframe"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <button class="dropdown-btn"><i class="fas fa-box"></i> Products
+            <i class="fas fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="product.html" target="iframe">Add Product</a>
+            <a href="view-products.html" target="iframe"><i class="fas fa-list"></i> View Products</a>
+            <a href="categories.html" target="iframe"><i class="fas fa-tags"></i> Categories</a>
+        </div>
+        <a href="orders.html" target="iframe"><i class="fas fa-shopping-cart"></i> Orders</a>
+        <a href="customers.html" target="iframe"><i class="fas fa-users"></i> Customers</a>
+        <a href="reports.html" target="iframe"><i class="fas fa-chart-line"></i> Reports</a>
+        <button class="dropdown-btn"><i class="fas fa-cog"></i> Settings
+            <i class="fas fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="profile-settings.html" target="iframe"><i class="fas fa-user-cog"></i> Profile Settings</a>
+            <a href="security-settings.html" target="iframe"><i class="fas fa-key"></i> Security Settings</a>
+            <a href="logout.html" target="iframe"><i class="fas fa-power-off"></i> Logout</a>
+        </div>
     </div>
-    <a href="orders.html" target="content-frame"><i class="fas fa-shopping-cart"></i> Orders</a>
-    <a href="customers.html" target="content-frame"><i class="fas fa-users"></i> Customers</a>
-    <a href="reports.html" target="content-frame"><i class="fas fa-chart-line"></i> Reports</a>
-    <button class="dropdown-btn"><i class="fas fa-cog"></i> Settings
-        <i class="fas fa-caret-down"></i>
-    </button>
-    <div class="dropdown-container">
-        <a href="profile-settings.html" target="content-frame"><i class="fas fa-user-cog"></i> Profile Settings</a>
-        <a href="security-settings.html" target="content-frame"><i class="fas fa-key"></i> Security Settings</a>
-        <a href="logout.html" target="content-frame"><i class="fas fa-power-off"></i> Logout</a>
+    <div class="main-content">
+        <iframe name="iframe" src="stats.html" frameborder="0" style="width: 100%; height: 100vh;"></iframe>
     </div>
-</div>
-<div class="main-content">
-    <iframe name="content-frame" src="stats.html" frameborder="0" style="width: 100%; height: 100vh;"></iframe>
-</div>
-<div class="footer">
-    &copy; 2024 E-commerce Admin Dashboard
-</div>
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <div class="footer">
+        &copy; 2024 E-commerce Admin Dashboard
+    </div>
+    <script>
+        // Get all elements with the class 'dropdown-btn'
+        var dropdowns = document.getElementsByClassName("dropdown-btn");
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+        // Loop through the dropdown buttons to add event listeners
+        for (var i = 0; i < dropdowns.length; i++) {
+            dropdowns[i].addEventListener("click", function() {
+                // Toggle between hiding and showing the dropdown content
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>
