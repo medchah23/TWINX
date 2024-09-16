@@ -6,34 +6,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Product | E-commerce Admin</title>
     <link rel="stylesheet" href="css/add_product.css">
+    <script src="js/add_product.js"></script>
 </head>
 
 <body>
-    <header>
-        <div class="header-container">
-            <h1>Add New Product</h1>
+<header>
+    <div class="header-container">
+        <h1>Add New Product</h1>
+    </div>
+</header>
+
+<main>
+    <form id="addProductForm" action="php/add_product.php" method="POST" enctype="multipart/form-data">
+
+        <!-- Product Name -->
+        <label for="productName">Product Name</label>
+        <input type="text" id="productName" name="productName" placeholder="Enter product name" required>
+
+        <!-- Product Description -->
+        <label for="productDescription">Description</label>
+        <textarea id="productDescription" name="productDescription" rows="4" placeholder="Enter product description" required></textarea>
+
+        <!-- Product Price -->
+        <label for="productPrice">Price ($)</label>
+        <input type="number" id="productPrice" name="productPrice" step="0.01" placeholder="Enter product price" required>
+
+        <!-- Category Selection -->
+        <label for="category">Category</label>
+        <select id="category" name="category" onchange="toggleCategoryInput()" required>
+            <option value="">Select a Category</option>
+            <option value="1">Electronics</option>
+            <option value="2">Toys</option>
+            <option value="new">Add New Category</option>
+        </select>
+
+        <!-- New Category Input -->
+        <div id="newCategoryInput" style="display: none;">
+            <label for="newCategory">New Category Name</label>
+            <input type="text" id="newCategory" name="newCategory" placeholder="Enter new category name">
+
+            <label for="category_desc">Category Description</label>
+            <textarea name="category_desc" id="category_desc" rows="3" placeholder="Enter category description"></textarea>
         </div>
-    </header>
 
-    <main>
-        <form id="addProductForm" action="php/add_product.php" method="POST" enctype="multipart/form-data">
-            <label for="productName">Product Name</label>
-            <input type="text" id="productName" name="productName" required>
+        <!-- Brand Selection -->
+        <label for="brand">Brand</label>
+        <select id="brand" name="brand" onchange="toggleBrandInput()" required>
+            <option value="">Select a Brand</option>
+            <option value="1">Apple</option>
+            <option value="2">Samsung</option>
+            <option value="new">Add New Brand</option>
+        </select>
 
-            <label for="productDescription">Description</label>
-            <textarea id="productDescription" name="productDescription" rows="4" required></textarea>
+        <!-- New Brand Input -->
+        <div id="newBrandInput" style="display: none;">
+            <label for="newBrand">New Brand Name</label>
+            <input type="text" id="newBrand" name="newBrand" placeholder="Enter new brand name">
 
-            <label for="productPrice">Price ($)</label>
-            <input type="number" id="productPrice" name="productPrice" step="0.01" required>
+            <label for="brand_desc">Brand Description</label>
+            <textarea name="brand_desc" id="brand_desc" rows="3" placeholder="Enter brand description"></textarea>
+        </div>
 
-            <label for="productImage">Image</label>
-            <input type="file" id="productImage" name="productImage" accept="image/*" required>
+        <!-- Product Image -->
+        <label for="productImage">Product Image</label>
+        <input type="file" id="productImage" name="productImage" accept="image/*" aria-label="Upload product image" required>
 
-            <button type="submit">Add Product</button>
-        </form>
-    </main>
+        <!-- Submit Button -->
+        <button type="submit">Add Product</button>
+    </form>
+</main>
 
- 
 </body>
-
 </html>
