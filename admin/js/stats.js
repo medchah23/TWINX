@@ -13,9 +13,9 @@ fetch('./php/stats.php')
 
 function updateMetrics(data) {
     const totalRevenueEl = document.getElementById('totalRevenue');
-    const totalOrdersEl = document.getElementById('total_orders');
-    const usersActiveEl = document.getElementById('users_active');
-    const pendingIssuesEl = document.getElementById('Pending_Issues');
+    const totalOrdersEl = document.getElementById('totalOrders');
+    const usersActiveEl = document.getElementById('activeUsers');
+    const pendingIssuesEl = document.getElementById('pendingIssues');
 
     if (totalRevenueEl) {
         totalRevenueEl.textContent = `$${data.total_sales || '0.00'}`;

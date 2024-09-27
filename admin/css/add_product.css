@@ -205,3 +205,18 @@ button:focus {
         font-size: 14px;
     }
 }
+/* Shake Animation */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+/* Error Class with Shake Animation */
+.error {
+    border-color: red; /* Change border color to red for invalid fields */
+    animation: shake 0.4s ease; /* Apply the shake animation */
+    animation-iteration-count: 1; /* Ensure the shake happens only once */
+}

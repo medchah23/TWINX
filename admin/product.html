@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Product | E-commerce Admin</title>
     <link rel="stylesheet" href="css/add_product.css">
-    <script src="js/add_product.js"></script>
+    <script src="js/add_product.js" defer></script>
 </head>
-
 <body>
 <header>
     <div class="header-container">
@@ -18,7 +16,6 @@
 
 <main>
     <form id="addProductForm" action="php/add_product.php" method="POST" enctype="multipart/form-data">
-
         <!-- Product Name -->
         <label for="productName">Product Name</label>
         <input type="text" id="productName" name="productName" placeholder="Enter product name" required>
@@ -30,6 +27,14 @@
         <!-- Product Price -->
         <label for="productPrice">Price ($)</label>
         <input type="number" id="productPrice" name="productPrice" step="0.01" placeholder="Enter product price" required>
+
+        <!-- Product Quantity -->
+        <label for="productQuantity">Quantity</label>
+        <input type="number" id="productQuantity" name="productQuantity" min="1" placeholder="Enter product quantity" required>
+
+        <!-- Age Estimation -->
+        <label for="ageEstimation">Age Estimation</label>
+        <input type="number" id="ageEstimation" name="ageEstimation" min="0" placeholder="Enter age estimation in years (if applicable)">
 
         <!-- Category Selection -->
         <label for="category">Category</label>
@@ -44,7 +49,6 @@
         <div id="newCategoryInput" style="display: none;">
             <label for="newCategory">New Category Name</label>
             <input type="text" id="newCategory" name="newCategory" placeholder="Enter new category name">
-
             <label for="category_desc">Category Description</label>
             <textarea name="category_desc" id="category_desc" rows="3" placeholder="Enter category description"></textarea>
         </div>
@@ -62,19 +66,17 @@
         <div id="newBrandInput" style="display: none;">
             <label for="newBrand">New Brand Name</label>
             <input type="text" id="newBrand" name="newBrand" placeholder="Enter new brand name">
-
             <label for="brand_desc">Brand Description</label>
             <textarea name="brand_desc" id="brand_desc" rows="3" placeholder="Enter brand description"></textarea>
         </div>
 
         <!-- Product Image -->
         <label for="productImage">Product Image</label>
-        <input type="file" id="productImage" name="productImage" accept="image/*" aria-label="Upload product image" required>
+        <input type="file" id="productImage" name="productImage" required>
 
         <!-- Submit Button -->
         <button type="submit">Add Product</button>
     </form>
 </main>
-
 </body>
 </html>

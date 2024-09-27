@@ -9,7 +9,7 @@ $dbName = 'twinx';
 // Create a connection
 $conn = new mysqli($host, $dbUsername, $dbPassword, $dbName);
 
-// Check connection
+
 if ($conn->connect_error) {
     echo json_encode(['error' => 'Database connection failed: ' . $conn->connect_error]);
     exit;
